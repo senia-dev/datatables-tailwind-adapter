@@ -1,7 +1,7 @@
 {
   "name": "datatables-tailwind-adapter",
   "version": "1.0.0",
-  "description": "Adapter, which changes DataTables Default Styling into Tailwind CSS v4",
+  "description": "Adapter, which changes DataTables Default Styling into Tailwind CSS",
   "main": "index.js",
   "style": "index.css",
   "scripts": {},
