@@ -15,7 +15,7 @@
     "jquery",
     "es6"
   ],
-  "dependencies": {
+  "devDependencies": {
     "datatables.net-autofill-dt": "^2.7.0",
     "datatables.net-buttons-dt": "^3.2.2",
     "datatables.net-colreorder-dt": "^2.0.4",
