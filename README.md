@@ -6,69 +6,14 @@ This package serves as an adapter for DataTables 2.*, which upgrades basic styli
 
 Adapter uses 3 color palettes: `light`, `dark` and `primary`. Make sure you have defined CSS variables for each color in default palette `50`, `100`, `200`, `300`, `400`, `500`, `600`, `700`, `800`, `900`, `950`.
 
+## Requirements
+
+Make sure you've installed and imported **DataTables** (*vanilla styling*) and **jQuery** into your project.
+
 ## Installation
 
 ```bash
 npm i datatables-tailwind-adapter
-```
-
-## Before usage
-
-Make sure you have installed DataTables and jQuery.
-
-**CSS:**
-
-```css
-/* Import DataTables to your CSS file */
-@import url('datatables.net-dt');
-@import url('datatables.net-autofill-dt');
-@import url('datatables.net-buttons-dt');
-@import url('datatables.net-datetime');
-@import url('datatables.net-colreorder-dt');
-@import url('datatables.net-fixedcolumns-dt');
-@import url('datatables.net-fixedheader-dt');
-@import url('datatables.net-keytable-dt');
-@import url('datatables.net-responsive-dt');
-@import url('datatables.net-rowgroup-dt');
-@import url('datatables.net-rowreorder-dt');
-@import url('datatables.net-scroller-dt');
-@import url('datatables.net-searchbuilder-dt');
-@import url('datatables.net-searchpanes-dt');
-@import url('datatables.net-select-dt');
-@import url('datatables.net-staterestore-dt');
-
-/* ... */
-```
-
-**JS:**
-
-```js
-// Import jQuery and DataTables to your JavaScript file
-import jQuery from "jquery";
-
-import jszip from 'jszip';
-import pdfmake from 'pdfmake';
-import DataTable from 'datatables.net-dt';
-import 'datatables.net-autofill-dt';
-import 'datatables.net-buttons-dt';
-import 'datatables.net-buttons/js/buttons.colVis.mjs';
-import 'datatables.net-buttons/js/buttons.html5.mjs';
-import 'datatables.net-buttons/js/buttons.print.mjs';
-import 'datatables.net-colreorder-dt';
-import DateTime from 'datatables.net-datetime';
-import 'datatables.net-fixedcolumns-dt';
-import 'datatables.net-fixedheader-dt';
-import 'datatables.net-keytable-dt';
-import 'datatables.net-responsive-dt';
-import 'datatables.net-rowgroup-dt';
-import 'datatables.net-rowreorder-dt';
-import 'datatables.net-scroller-dt';
-import 'datatables.net-searchbuilder-dt';
-import 'datatables.net-searchpanes-dt';
-import 'datatables.net-select-dt';
-import 'datatables.net-staterestore-dt';
-
-// ...
 ```
 
 ## Usage
@@ -76,8 +21,6 @@ import 'datatables.net-staterestore-dt';
 **CSS:**
 
 ```css
-/* ... */
-
 /* Import adapter to your Tailiwnd CSS file */
 @import 'datatables-tailwind-adapter';
 
@@ -113,24 +56,96 @@ import 'datatables.net-staterestore-dt';
 **JS:**
 
 ```js
-// ...
-
-// Import adapter
+// Import adapter and execute
 import { TailwindAdapter } from 'datatables-tailwind-adapter';
 
-// Run
 new TailwindAdapter().build()
 ```
 
 ## Customization
 
-If you want to customize adapter with your own classes, you can access prebuilt object `DataTabelT` and modify it as you wish:
+If you want to customize adapter with your own classes, you can define config while creating adapter, or access prebuilt object `DataTabelT` after initialization, and modify it as you wish.
+
+### Configuration file
 
 ```js
 // ...
 
-// Import adapter
-import { TailwindAdapter } from 'datatables-tailwind-adapter';
+new TailwindAdapter({
+    bg: 'bg-white dark:bg-gray-950',
+    text: {
+        size: {
+            table: 'text-sm'
+        }
+    }
+}).build();
+```
+
+While defining new adapter, you can add some configuration variables. Adapter **config** containts 2 parts: 
+
+**First:**
+```js
+{
+    // First one is basic. 
+    // It contains less than variables, which are used to generate elements for the second half of config:
+    bg: "bg-light-50 dark:bg-dark-700",
+    text: {
+        size: {
+            table: "text-sm",
+            forms: "text-sm"
+        },
+        emphasis: "text-gray-900 dark:text-white",
+        muted: "text-gray-500 dark:text-gray-400"
+    },
+    spacing: {
+        rows: "space-y-4",
+        vertical: "gap-x-2",
+        horizontal: "gap-y-2"
+    },
+    border: {
+        radius: "rounded-lg",
+        color: "border-light-200 dark:border-dark-600",
+        focus: "focus:ring-1 focus:ring-primary-500 focus:border-primary-500"
+    }
+}
+```
+
+**And second:**
+
+```js
+{
+    // Basic config ...
+
+    // Second one contains complex form elements and extra gap variable in `spacing`.
+    // Those elements are meant to be compiled with variables from basic config.
+    // 
+    // But if you want them fully personalized, you can define them manually too. 
+    
+    spacing: {
+        // ...
+
+        gap: ""
+    },
+    forms: {
+        input: "",
+        search: "",
+        select: "",
+        button: {
+            link: "",
+            alternative: ""
+        }
+    }
+}
+```
+
+[Click here][#config] to check default *config.js* file definition in **TailwindAdapter**.
+
+> Don't forget to add *@source* path of your JS file into CSS with Tailwind initialization, so that framework could recognize your classes
+
+### Prebuilt object tree
+
+```js
+// ...
 
 // Initialize adapter
 var adapter = new TailwindAdapter()
@@ -142,7 +157,41 @@ adapter.DataTableT.Buttons.defaults.dom.container.className = 'flex flex-col gap
 adapter.build();
 ```
 
+Before building adapter, you can access DataTables extensions tree, called `DataTablesT` and change any compiled class as you wish. Missing keys will be completed with compiled ones, so if you want to remove class in any element, just define it as an empty string.
+
+```js
+// DatatablesT object tree
+
+DatatablesT: {
+    ext: {
+        classes: // ...
+    },
+    Buttons: {
+        defaults: // ...
+    },
+    Criteria: {
+        classes: // ...
+    },
+    Group: {
+        classes: // ...
+    },
+    SearchBuilder: {
+        classes: // ...
+    },
+    SearchPane: {
+        classes: // ...
+    },
+    SearchPanes: {
+        classes: // ...
+    },
+}
+```
+
+> Don't forget to add *@source* path of your JS file into CSS with Tailwind initialization, so that framework could recognize your classes
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
 
+
+[#config]: ./extensions/config.js

@@ -1,0 +1,71 @@
+{
+    "classes": {
+        "container": "",
+        "empty": {
+            "row": ""
+        },
+        "info": {
+            "container": ""
+        },
+        "layout": {
+            "row": "",
+            "cell": "",
+            "tableRow": "",
+            "tableCell": "",
+            "start": "",
+            "end": "",
+            "full": ""
+        },
+        "length": {
+            "container": "",
+            "select": ""
+        },
+        "order": {
+            "canAsc": "",
+            "canDesc": "",
+            "isAsc": "",
+            "isDesc": "",
+            "none": "",
+            "position": ""
+        },
+        "processing": {
+            "container": ""
+        },
+        "scrolling": {
+            "body": "",
+            "container": "",
+            "footer": {
+                "self": "",
+                "inner": ""
+            },
+            "header": {
+                "self": "",
+                "inner": ""
+            }
+        },
+        "search": {
+            "container": "",
+            "input": ""
+        },
+        "table": "",
+        "tbody": {
+            "cell": "",
+            "row": ""
+        },
+        "thead": {
+            "cell": "",
+            "row": ""
+        },
+        "tfoot": {
+            "cell": "",
+            "row": ""
+        },
+        "paging": {
+            "active": "",
+            "button": "",
+            "container": "",
+            "disabled": "",
+            "nav": ""
+        }
+    }
+}

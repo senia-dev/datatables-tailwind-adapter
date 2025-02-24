@@ -1,0 +1,21 @@
+{
+    "bg": "",
+    "text": {
+        "size": {
+            "table": "",
+            "forms": ""
+        },
+        "emphasis": "",
+        "muted": ""
+    },
+    "spacing": {
+        "rows": "",
+        "vertical": "",
+        "horizontal": ""
+    },
+    "border": {
+        "radius": "",
+        "color": "",
+        "focus": ""
+    }
+}

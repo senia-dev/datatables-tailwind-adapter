@@ -1,4 +1,4 @@
-export default function (elements) {
+export function insertSearchBuilder(elements) {
     return {
         button: elements.forms.button.alternative,
         clearAll: `sm:ms-auto`,

@@ -1,4 +1,4 @@
-export default function (elements) {
+export function insertSearchPane(elements) {
     return {
         bordered: ``,
         buttonGroup: `flex flex-row ${elements.spacing.gap} items-center`,

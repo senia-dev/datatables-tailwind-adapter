@@ -1,4 +1,4 @@
-export default function (elements) {
+export function insertButtons(elements) {
     return {
         dom: {
             container: {

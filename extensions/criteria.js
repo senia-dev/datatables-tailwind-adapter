@@ -1,4 +1,4 @@
-export default function (elements) {
+export function insertCriteria(elements) {
     return {
         button: ``,
         buttonContainer: `flex flex-row items-center ${elements.spacing.gap}`,

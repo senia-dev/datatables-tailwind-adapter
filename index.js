@@ -1,112 +1,129 @@
-import { default as elements } from "./extensions/elements";
-import { default as insertDefault } from "./extensions/default";
-import { default as insertButtons } from "./extensions/buttons";
-import { default as insertCriteria } from "./extensions/criteria";
-import { default as insertGroup } from "./extensions/group";
-import { default as insertSearchBuilder } from "./extensions/searchBuilder";
-import { default as insertSearchPane } from "./extensions/searchPane";
-import { default as insertSearchPanes } from "./extensions/searchPanes";
+import { AdapterConfig } from "./extensions/config";
+
+import { Adapter } from "./src/datatables";
+import { Structure } from "./src/structure";
 
 export class TailwindAdapter {
     // Public prebuilt object
     DataTableT;
-    // Required colors
-    #stack = ['light', 'dark', 'primary'];
-    // Palette range
-    #palette = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
-    // Basic elements
-    #elements;
+    // Config
+    Options;
+    // Private prebuilt object
+    #DataTableR;
+    // CSS vars, used in adapter
+    #variables = [
+        '--color-primary-100',
+        '--color-primary-200',
+        '--color-primary-300',
+        '--color-primary-400',
+        '--color-primary-500',
+        '--color-primary-600',
+        '--color-primary-700',
+        '--color-primary-800',
+        '--color-primary-900',
 
-    constructor() {
+        '--color-light-50',
+        '--color-light-100',
+        '--color-light-200',
+        '--color-light-300',
+
+        '--color-dark-600',
+        '--color-dark-700',
+        '--color-dark-800',
+        '--color-dark-900',
+    ];
+
+    constructor(
+        CustomOptions = {}
+    ) {
         // Validation CSS variables
         this.#validateColors();
-        // Building basic elements
-        this.#elements = elements(...this.#stack);
+        // Building basic config
+        CustomOptions = this.#validateStructure(CustomOptions, 'options', AdapterConfig());
+
+        this.Options = AdapterConfig(CustomOptions);
+
         // Preparing public `DataTableT`
-        this.#prepareObject();
+        this.DataTableT = this.#DataTableR = Adapter(this.Options);
     }
 
     build() {
         // Basic styles
         $.extend(
             DataTable.ext.classes,
-            this.DataTableT.ext.classes
+            this.#validateStructure(this.DataTableT.ext, 'ext', this.#DataTableR.ext).classes
         );
         // Buttons
         $.extend(
             true,
             DataTable.Buttons.defaults,
-            this.DataTableT.Buttons.defaults
+            this.#validateStructure(this.DataTableT.Buttons, 'buttons', this.#DataTableR.Buttons).defaults
         );
         // Criteria - SearchBuilder
         $.extend(
             true,
             DataTable.Criteria.classes,
-            this.DataTableT.Criteria.classes
+            this.#validateStructure(this.DataTableT.Criteria, 'criteria', this.#DataTableR.Criteria).classes
         );
         // Group - SearchBuilder
         $.extend(
             true,
             DataTable.Group.classes,
-            this.DataTableT.Group.classes
+            this.#validateStructure(this.DataTableT.Group, 'group', this.#DataTableR.Group).classes
         );
         // SearchBuilder
         $.extend(
             true,
             DataTable.SearchBuilder.classes,
-            this.DataTableT.SearchBuilder.classes
+            this.#validateStructure(this.DataTableT.SearchBuilder, 'search_builder', this.#DataTableR.SearchBuilder).classes
         );
         // SearchPane
         $.extend(
             true,
             DataTable.SearchPane.classes,
-            this.DataTableT.SearchPane.classes
+            this.#validateStructure(this.DataTableT.SearchPane, 'search_pane', this.#DataTableR.SearchPane).classes
         );
         // SearchPanes
         $.extend(
             true,
             DataTable.SearchPanes.classes,
-            this.DataTableT.SearchPanes.classes
+            this.#validateStructure(this.DataTableT.SearchPanes, 'search_panes', this.#DataTableR.SearchPanes).classes
         );
+
+        return this;
     }
 
     #validateColors() {
-        // For each palette range
-        this.#palette.forEach((value) => {
-            // And each color
-            this.#stack.forEach((color) => {
-                // Check if variable `--color-${color}-${value}` exists in CSS
-                if (window.getComputedStyle(document.body).getPropertyValue(`--color-${color}-${value}`) === "") {
-                    throw new Error(`Missing --color-${color}-${value} CSS variable`);
-                }
-            });
+        // And each color
+        this.#variables.forEach((color) => {
+            // Check if variable `${color}` exists in CSS
+            if (window.getComputedStyle(document.body).getPropertyValue(`${color}`) === "") {
+                throw new Error(`Missing ${color} CSS variable`);
+            }
         });
     }
 
-    #prepareObject() {
-        // Prebuilt object generation
-        this.DataTableT = {
-            ext: {
-                classes: insertDefault(this.#elements)
-            },
-            Buttons: {
-                defaults: insertButtons(this.#elements)
-            },
-            Criteria: {
-                classes: insertCriteria(this.#elements)
-            },
-            Group: {
-                classes: insertGroup(this.#elements)
-            },
-            SearchBuilder: {
-                classes: insertSearchBuilder(this.#elements)
-            },
-            SearchPane: {
-                classes: insertSearchPane(this.#elements)
-            },
-            SearchPanes: {
-                classes: insertSearchPanes(this.#elements)
-            },
+    #validateStructure(target, name, replacement) {
+        let $valid = Structure[name];
+
+        if (typeof target !== 'object') {
+            throw new Error(`${name} preset is not an object`);
         }
+
+        return this.#iterateThroughObject($valid, target, replacement);
+    }
+
+    #iterateThroughObject(valid, target, replacement) {
+        Object.keys(valid).forEach(key => {
+            if (target[key] == undefined) {
+                target[key] = replacement[key];
+            }
+
+            if (typeof valid[key] === 'object' && valid[key] !== null) {
+                target[key] = this.#iterateThroughObject(valid[key], target[key], replacement[key])
+            }
+        })
+
+        return target;
     }
 }

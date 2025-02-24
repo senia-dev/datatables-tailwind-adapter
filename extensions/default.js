@@ -1,4 +1,4 @@
-export default function (elements) {
+export function insertDefault(elements) {
     return {
         container: `dt-container ${elements.text.emphasis} ${elements.text.size.table} ${elements.spacing.rows} w-full`,
         empty: {

@@ -1,4 +1,4 @@
-export default function (elements) {
+export function insertGroup(elements) {
     return {
         add: `sm:max-w-48`,
         button: `${elements.forms.button.link} border ${elements.border.radius} ${elements.border.color} p-3`,

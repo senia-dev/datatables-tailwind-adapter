@@ -1,4 +1,4 @@
-export default function (elements) {
+export function insertSearchPanes(elements) {
     return {
         clear: `dtsp-clear`,
         clearAll: `sm:ms-auto ${elements.forms.button.alternative}`,

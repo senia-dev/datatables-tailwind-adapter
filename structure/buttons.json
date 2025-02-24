@@ -1,0 +1,52 @@
+{
+    "defaults": {
+        "dom": {
+            "container": {
+                "tag": "",
+                "className": ""
+            },
+            "collection": {
+                "container": {
+                    "className": "",
+                    "content": {
+                        "className": "",
+                        "tag": ""
+                    },
+                    "tag": ""
+                }
+            },
+            "button": {
+                "tag": "",
+                "className": "",
+                "active": "",
+                "disabled": "",
+                "spacer": {
+                    "className": "",
+                    "tag": ""
+                },
+                "liner": {
+                    "tag": "",
+                    "className": ""
+                },
+                "dropClass": "",
+                "dropHtml": ""
+            },
+            "split": {
+                "action": {
+                    "className": "",
+                    "tag": ""
+                },
+                "dropdown": {
+                    "align": "",
+                    "className": "",
+                    "splitAlignClass": "",
+                    "tag": ""
+                },
+                "wrapper": {
+                    "className": "",
+                    "tag": ""
+                }
+            }
+        }
+    }
+}
