@@ -24,8 +24,8 @@
         "search": "",
         "select": "",
         "button": {
-            "link": "",
-            "alternative": ""
+            "default": "",
+            "link": ""
         }
     }
 }

@@ -7,10 +7,10 @@ export function insertButtons(elements) {
             },
             collection: {
                 container: {
-                    // The element used for the dropdown
+                    // The element used for the dropdown `dt-button-collection`
                     className: `dt-button-collection`,
                     content: {
-                        className: ``,
+                        className: `${elements.bg} flex flex-row flex-wrap ${elements.spacing.gap} p-2 border ${elements.border.color} ${elements.border.radius}`,
                         tag: `div`
                     },
                     tag: `div`
@@ -21,7 +21,7 @@ export function insertButtons(elements) {
             },
             button: {
                 tag: `button`,
-                className: elements.forms.button.alternative,
+                className: `${elements.forms.button.default}`,
                 active: `dt-button-active`, // class name
                 disabled: `disabled`, // class name
                 spacer: {
@@ -33,24 +33,24 @@ export function insertButtons(elements) {
                     className: ``
                 },
                 dropClass: ``,
-                dropHtml: `<span class="dt-button-down-arrow">&#x25BC;</span>`
+                dropHtml: `<span class="text-xs">&#x25BC;</span>`
             },
             split: {
                 action: {
                     // action button
-                    className: `dt-button-split-drop-button dt-button`,
+                    className: `${elements.forms.button.default}`,
                     tag: `button`
                 },
                 dropdown: {
                     // button to trigger the dropdown
                     align: `split-right`,
-                    className: `dt-button-split-drop`,
+                    className: `${elements.forms.button.default} !border-l-0 !rounded-l-none !px-1.5`,
                     splitAlignClass: `dt-button-split-left`,
                     tag: `button`
                 },
                 wrapper: {
                     // wrap around both
-                    className: `dt-button-split`,
+                    className: `flex flex-row *:first:!border-r-0 *:first:!rounded-r-none`,
                     tag: `div`
                 }
             }

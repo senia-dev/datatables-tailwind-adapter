@@ -1,6 +1,6 @@
 export function insertSearchBuilder(elements) {
     return {
-        button: elements.forms.button.alternative,
+        button: elements.forms.button.default,
         clearAll: `sm:ms-auto`,
         container: ``,
         inputButton: `dtsb-iptbtn`,

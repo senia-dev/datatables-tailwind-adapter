@@ -53,11 +53,11 @@ export function insertDefault(elements) {
             row: `hover:bg-light-300/50 dark:hover:bg-dark-700/50 border-b ${elements.border.color}`
         },
         thead: {
-            cell: `text-nowrap text-xs !font-medium uppercase ${elements.border.color}`,
+            cell: `text-xs *:font-medium uppercase ${elements.border.color}`,
             row: `border-b ${elements.border.color}`
         },
         tfoot: {
-            cell: `text-nowrap text-xs !font-medium uppercase ${elements.border.color}`,
+            cell: `text-xs *:font-medium uppercase ${elements.border.color}`,
             row: ``
         },
         paging: {
