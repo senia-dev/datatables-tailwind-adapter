@@ -53,6 +53,14 @@ npm i datatables-tailwind-adapter
 }
 ```
 
+Currently used colors (required):
+
+| Color     | Number                                      |
+|:----------|:--------------------------------------------|
+| *light*   | 50, 100, 200, 300                           |
+| *dark*    | 600, 700, 800, 900                          |
+| *primary* | 100, 200, 300, 400, 500, 600, 700, 800, 900 |
+
 **JS:**
 
 ```js
@@ -87,25 +95,35 @@ While defining new adapter, you can add some configuration variables. Adapter **
 ```js
 {
     // First one is basic. 
-    // It contains less than variables, which are used to generate elements for the second half of config:
-    bg: "bg-light-50 dark:bg-dark-700",
+    // It contains variables, which are used to generate elements for the second half of config:
+    
+    // Form elements background, dropdowns
+    bg: `bg-light-50 dark:bg-dark-700`,
     text: {
+        // Text size
         size: {
-            table: "text-sm",
-            forms: "text-sm"
+            table: 'text-sm',
+            forms: 'text-sm'
         },
-        emphasis: "text-gray-900 dark:text-white",
-        muted: "text-gray-500 dark:text-gray-400"
+        // Text colors
+        emphasis: `text-gray-900 dark:text-white`,
+        muted: `text-gray-500 dark:text-gray-400`,
     },
     spacing: {
-        rows: "space-y-4",
-        vertical: "gap-x-2",
-        horizontal: "gap-y-2"
+        // DT rows vertical space
+        rows: 'space-y-4',
+        // Flex/grid elements vertical space
+        vertical: 'gap-x-2',
+        // Flex/grid elements horizontal space
+        horizontal: 'gap-y-2',
     },
     border: {
-        radius: "rounded-lg",
-        color: "border-light-200 dark:border-dark-600",
-        focus: "focus:ring-1 focus:ring-primary-500 focus:border-primary-500"
+        // Border radius
+        radius: `rounded-lg`,
+        // Border color
+        color: `border-light-200 dark:border-dark-600`,
+        // Focus ring
+        focus: `focus:ring-1 focus:ring-primary-500 focus:border-primary-500`
     }
 }
 ```
@@ -131,8 +149,8 @@ While defining new adapter, you can add some configuration variables. Adapter **
         search: "",
         select: "",
         button: {
-            link: "",
-            alternative: ""
+            default: "",
+            link: ""
         }
     }
 }
@@ -157,37 +175,65 @@ adapter.DataTableT.Buttons.defaults.dom.container.className = 'flex flex-col gap
 adapter.build();
 ```
 
-Before building adapter, you can access DataTables extensions tree, called `DataTablesT` and change any compiled class as you wish. Missing keys will be completed with compiled ones, so if you want to remove class in any element, just define it as an empty string.
+Before building adapter, you can access DataTables extensions tree, called `DataTabelT` and change any compiled class as you wish. Missing keys will be completed with compiled ones, so if you want to remove class in any element, just define it as an empty string.
 
 ```js
-// DatatablesT object tree
+// DataTabelT object tree
 
-DatatablesT: {
+DataTabelT: {
     ext: {
-        classes: // ...
+        classes: /* ./extensions/default.js */
     },
     Buttons: {
-        defaults: // ...
+        defaults: /* ./extensions/buttons.js */
     },
     Criteria: {
-        classes: // ...
+        classes: /* ./extensions/criteria.js */
     },
     Group: {
-        classes: // ...
+        classes: /* ./extensions/group.js */
     },
     SearchBuilder: {
-        classes: // ...
+        classes: /* ./extensions/searchBuilder.js */
     },
     SearchPane: {
-        classes: // ...
+        classes: /* ./extensions/searchPane.js */
     },
     SearchPanes: {
-        classes: // ...
-    },
+        classes: /* ./extensions/searchPanes.js */
+    }
 }
 ```
 
 > Don't forget to add *@source* path of your JS file into CSS with Tailwind initialization, so that framework could recognize your classes
+
+## Contributing
+
+In case you want to help develop this little project (or you have some cool ideas or improvements :)), check out [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+Test case I am using currently: 
+
+```js
+// ...
+
+import { TailwindAdapter } from 'datatables-tailwind-adapter';
+import { defaults } from 'datatables-tailwind-adapter/tests/defaults';
+import * as arrays from 'datatables-tailwind-adapter/tests/arrays.json'
+
+new TailwindAdapter()build();
+
+var table = new DataTable("#example", {
+    columns: [
+        { title: "Name" },
+        { title: "Position" },
+        { title: "Office" },
+        { title: "Extn." },
+        { title: "Start date" },
+        { title: "Salary" },
+    ],
+    data: arrays.data,
+});
+```
 
 ## License
 
