@@ -30,7 +30,6 @@ export class TailwindAdapter {
         '--color-dark-600',
         '--color-dark-700',
         '--color-dark-800',
-        '--color-dark-900',
     ];
 
     constructor(

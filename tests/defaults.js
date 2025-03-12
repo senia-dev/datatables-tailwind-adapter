@@ -32,7 +32,7 @@ export const defaults = {
         targets: '_all'
     }],
     fixedColumns: {
-        left: 1
+        left: 3
     },
     fixedHeader: true,
     layout: {
