@@ -1,6 +1,6 @@
 export function insertDefault(elements) {
     return {
-        container: `dt-container ${elements.text.emphasis} ${elements.text.size.table} ${elements.spacing.rows} w-full`,
+        container: `dt-container ${elements.text.emphasis} ${elements.table.text} ${elements.spacing.rows} w-full`,
         empty: {
             row: `p-3 text-center ${elements.text.muted}`,
         },
@@ -49,15 +49,15 @@ export function insertDefault(elements) {
         },
         table: `dataTable`,
         tbody: {
-            cell: `odd:bg-transparent even:bg-light-200/50 dark:even:bg-dark-900/50`,
-            row: `hover:bg-light-300/50 dark:hover:bg-dark-700/50 border-b ${elements.border.color}`
+            cell: `${elements.table.cell} ${elements.table.hover} ${elements.table.selected} ${elements.table.striped.row.cell} ${elements.table.striped.col.cell} ${elements.table.striped.col.hover} ${elements.table.striped.col.selected} ${elements.table.striped.col.reorder}`,
+            row: `group border-b ${elements.border.color}`
         },
         thead: {
-            cell: `text-xs *:font-medium uppercase ${elements.border.color}`,
+            cell: `text-xs *:font-medium uppercase ${elements.border.color} ${elements.table.cell} ${elements.table.striped.col.cell}`,
             row: `border-b ${elements.border.color}`
         },
         tfoot: {
-            cell: `text-xs *:font-medium uppercase ${elements.border.color}`,
+            cell: `text-xs *:font-medium uppercase ${elements.border.color} ${elements.table.cell} ${elements.table.striped.col.cell}`,
             row: ``
         },
         paging: {
