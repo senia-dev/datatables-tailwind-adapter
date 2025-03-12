@@ -1,10 +1,24 @@
 {
     "bg": "",
-    "text": {
-        "size": {
-            "table": "",
-            "forms": ""
+    "table": {
+        "text": "",
+        "cell": "",
+        "striped": {
+            "col": {
+                "cell": "",
+                "hover": "",
+                "selected": "",
+                "reorder": ""
+            },
+            "row": {
+                "cell": ""
+            }
         },
+        "hover": "",
+        "selected": ""
+    },
+    "text": {
+        "size": "",
         "emphasis": "",
         "muted": ""
     },
