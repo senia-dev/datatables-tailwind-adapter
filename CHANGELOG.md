@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.3] - 2025-03-12
+
+### Added
+
+- Added **.striped-col** and **.striped-row** support for table rows
+
+### Changed
+
+- Basic config update: 
+    - Text size variables separated
+    - Table config created
+- Removed some custom CSS classes
+
+## Fixed
+
+- Fixed colors for dark mode
+- Small code improvements
+
+> Author: @senia-dev
+
 ## [1.0.2] - 2025-02-26
 
 ### Added
