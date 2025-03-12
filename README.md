@@ -27,6 +27,9 @@ npm i datatables-tailwind-adapter
 /* Add source (change path based on your .css file location) */
 @source '../../node_modules/datatables-tailwind-adapter/extensions/*.js';
 
+/* Dark mode with .dark class */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* 
     Add `light`, `dark` and `primary` color variables
     for palette [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
@@ -51,6 +54,7 @@ npm i datatables-tailwind-adapter
     --color-dark-200: var(--color-slate-200);
     /* and so on ... */
 }
+
 ```
 
 Currently used colors (required):
@@ -58,7 +62,7 @@ Currently used colors (required):
 | Color     | Number                                      |
 |:----------|:--------------------------------------------|
 | *light*   | 50, 100, 200, 300                           |
-| *dark*    | 600, 700, 800, 900                          |
+| *dark*    | 600, 700, 800                               |
 | *primary* | 100, 200, 300, 400, 500, 600, 700, 800, 900 |
 
 **JS:**
@@ -69,6 +73,21 @@ import { TailwindAdapter } from 'datatables-tailwind-adapter';
 
 new TailwindAdapter().build()
 ```
+
+## Striped (new)
+
+Each table cell has predefined behaviour, if parent has class **.striped-col** (for column stripes) or **.striped-row** (for row stripes). 
+
+```html
+<!-- Example usage -->
+<tr class="striped-col">
+    <td>Column 1</td>
+    <td>Column 2</td>
+    <td>Column 3</td>
+</tr>
+```
+
+Works with `thead`, `tbody` and `tfoot` table rows.
 
 ## Customization
 
@@ -82,9 +101,7 @@ If you want to customize adapter with your own classes, you can define config wh
 new TailwindAdapter({
     bg: 'bg-white dark:bg-gray-950',
     text: {
-        size: {
-            table: 'text-sm'
-        }
+        size: 'text-lg'
     }
 }).build();
 ```
@@ -99,23 +116,49 @@ While defining new adapter, you can add some configuration variables. Adapter **
     
     // Form elements background, dropdowns
     bg: `bg-light-50 dark:bg-dark-700`,
+    table: {
+        // Table text size
+        text: `text-sm`,
+        // Table cell background
+        cell: `!bg-light-50 dark:!bg-dark-800`,
+        // Table cell behavior on hover
+        hover: `group-hover:!bg-light-100 group-hover:dark:!bg-dark-700`,
+        // Table cell behavior when selected
+        selected: `group-[.selected]:!bg-primary-100 group-[.selected]:dark:!bg-primary-800 group-[.selected]:!border-primary-300 group-[.selected]:dark:!border-primary-500`,
+        // Striped table
+        striped: {
+            // Striped columns (.striped-col)
+            col: {
+                // Table cell background
+                cell: `group-[.striped-col]:even:!bg-light-100 group-[.striped-col]:dark:even:!bg-dark-700`,
+                // Table cell behavior on hover
+                hover: `group-[.striped-col:not(.selected):hover]:even:!bg-light-200 group-[.striped-col:not(.selected):hover]:dark:even:!bg-dark-600`,
+                // Table cell behavior when selected
+                selected: `group-[.striped-col.selected]:even:!bg-primary-200 group-[.striped-col.selected]:dark:even:!bg-primary-700`,
+                // Table cell behavior when reorder
+                reorder: `[.dtcr-moving-first]:!border-primary-300 [.dtcr-moving-last]:!border-primary-300 [.dtcr-moving-first]:dark:!border-primary-500 [.dtcr-moving-last]:dark:!border-primary-500`,
+            },
+            // Striped rows (.striped-row)
+            row: {
+                // Table cell background
+                cell: `group-[:nth-of-type(2n).striped-row]:!bg-light-100 group-[:nth-of-type(2n).striped-row]:dark:!bg-dark-700`
+            },
+        }
+    },
     text: {
         // Text size
-        size: {
-            table: 'text-sm',
-            forms: 'text-sm'
-        },
+        size: `text-sm`,
         // Text colors
         emphasis: `text-gray-900 dark:text-white`,
         muted: `text-gray-500 dark:text-gray-400`,
     },
     spacing: {
         // DT rows vertical space
-        rows: 'space-y-4',
+        rows: `space-y-4`,
         // Flex/grid elements vertical space
-        vertical: 'gap-x-2',
+        vertical: `gap-x-1`,
         // Flex/grid elements horizontal space
-        horizontal: 'gap-y-2',
+        horizontal: `gap-y-1`,
     },
     border: {
         // Border radius
@@ -220,7 +263,7 @@ import { TailwindAdapter } from 'datatables-tailwind-adapter';
 import { defaults } from 'datatables-tailwind-adapter/tests/defaults';
 import * as arrays from 'datatables-tailwind-adapter/tests/arrays.json'
 
-new TailwindAdapter()build();
+new TailwindAdapter().build();
 
 var table = new DataTable("#example", {
     columns: [
