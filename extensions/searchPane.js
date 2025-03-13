@@ -21,7 +21,7 @@ export function insertSearchPane(elements) {
         narrow: `!flex-col`,
         paneButton: `${elements.forms.button.default} h-full`,
         paneInputButton: ``,
-        pill: `bg-primary-100 text-primary-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-primary-900 dark:text-primary-300`,
+        pill: `bg-primary-500 text-primary-100 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-primary-400 dark:text-primary-900`,
         rotated: `dtsp-rotated`,
         search: `${elements.forms.search} min-w-32`,
         searchCont: `flex flex-row w-full ${elements.spacing.gap} flex-nowrap`,
