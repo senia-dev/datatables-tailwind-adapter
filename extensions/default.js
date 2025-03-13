@@ -62,8 +62,7 @@ export function insertDefault(elements) {
         },
         paging: {
             active: `font-semibold bg-primary-600 dark:bg-primary-500 border-primary-700 dark:!border-primary-600 hover:!bg-primary-500 dark:hover:!bg-primary-400`,
-            button:
-                `relative inline-flex justify-center items-center space-x-2 border px-4 py-2 -mr-px leading-6 hover:z-10 focus:z-10 active:z-10 active:shadow-none ${elements.forms.button.link} ${elements.border.color}`,
+            button: `relative inline-flex justify-center items-center space-x-2 border px-4 py-2 -mr-px leading-6 hover:z-2 focus:z-2 active:z-2 active:shadow-none ${elements.forms.button.link} ${elements.border.color}`,
             container: ``,
             disabled: `${elements.text.muted}`,
             nav: `dtta-pagination flex flex-nowrap`,

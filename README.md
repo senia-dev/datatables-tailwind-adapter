@@ -1,5 +1,9 @@
 # datatables-tailwind-adapter
 
+![GitHub package.json version (branch)](https://img.shields.io/github/v/release/senia-dev/datatables-tailwind-adapter)
+![GitHub License](https://img.shields.io/github/license/senia-dev/datatables-tailwind-adapter)
+![NPM Downloads](https://img.shields.io/npm/d18m/datatables-tailwind-adapter)
+
 This package serves as an adapter for DataTables 2.*, which upgrades basic styling with Tailwind CSS classes.
 
 > Works with Tailwind CSS 4!
@@ -87,7 +91,7 @@ Each table cell has predefined behaviour, if parent has class **.striped-col** (
 </tr>
 ```
 
-Works with `thead`, `tbody` and `tfoot` table rows.
+Works with`tbody` (`thead` and `tfoot` - only **.striped-col**) table rows.
 
 ## Customization
 
@@ -117,8 +121,12 @@ While defining new adapter, you can add some configuration variables. Adapter **
     // Form elements background, dropdowns
     bg: `bg-light-50 dark:bg-dark-700`,
     table: {
-        // Table text size
-        text: `text-sm`,
+        // Table text 
+        text: {
+            head: `text-xs *:font-medium uppercase`,
+            body: `text-sm`,
+            foot: `text-xs *:font-medium uppercase`
+        },
         // Table cell background
         cell: `!bg-light-50 dark:!bg-dark-800`,
         // Table cell behavior on hover
@@ -136,12 +144,13 @@ While defining new adapter, you can add some configuration variables. Adapter **
                 // Table cell behavior when selected
                 selected: `group-[.striped-col.selected]:even:!bg-primary-200 group-[.striped-col.selected]:dark:even:!bg-primary-700`,
                 // Table cell behavior when reorder
-                reorder: `[.dtcr-moving-first]:!border-primary-300 [.dtcr-moving-last]:!border-primary-300 [.dtcr-moving-first]:dark:!border-primary-500 [.dtcr-moving-last]:dark:!border-primary-500`,
+                reorder: `[.dtcr-moving-first]:!border-primary-300 [.dtcr-moving-last]:!border-primary-300 [.dtcr-moving-first]:dark:!border-primary-500 [.dtcr-moving-last]:dark:!border-primary-500`
             },
             // Striped rows (.striped-row)
             row: {
                 // Table cell background
-                cell: `group-[:nth-of-type(2n).striped-row]:!bg-light-100 group-[:nth-of-type(2n).striped-row]:dark:!bg-dark-700`
+                cell: `group-[:nth-of-type(2n).striped-row]:!bg-light-100 group-[:nth-of-type(2n).striped-row]:dark:!bg-dark-700`,
+                hover: `group-[:nth-of-type(2n).striped-row:hover]:!bg-light-200 group-[:nth-of-type(2n).striped-row:hover]:dark:!bg-dark-600`
             },
         }
     },
@@ -150,7 +159,7 @@ While defining new adapter, you can add some configuration variables. Adapter **
         size: `text-sm`,
         // Text colors
         emphasis: `text-gray-900 dark:text-white`,
-        muted: `text-gray-500 dark:text-gray-400`,
+        muted: `text-gray-500 dark:text-gray-400`
     },
     spacing: {
         // DT rows vertical space
@@ -158,13 +167,13 @@ While defining new adapter, you can add some configuration variables. Adapter **
         // Flex/grid elements vertical space
         vertical: `gap-x-1`,
         // Flex/grid elements horizontal space
-        horizontal: `gap-y-1`,
+        horizontal: `gap-y-1`
     },
     border: {
         // Border radius
         radius: `rounded-lg`,
         // Border color
-        color: `border-light-200 dark:border-dark-600`,
+        color: `!border-b-light-200 !border-t-light-200 !border-l-light-200 !border-r-light-200 dark:!border-b-dark-600 dark:!border-t-dark-600 dark:!border-l-dark-600 dark:!border-r-dark-600`,
         // Focus ring
         focus: `focus:ring-1 focus:ring-primary-500 focus:border-primary-500`
     }
@@ -274,7 +283,7 @@ var table = new DataTable("#example", {
         { title: "Start date" },
         { title: "Salary" },
     ],
-    data: arrays.data,
+    data: arrays.data
 });
 ```
 
