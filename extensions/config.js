@@ -5,8 +5,12 @@ export function AdapterConfig(
         // Form elements background, dropdowns
         bg: `bg-light-50 dark:bg-dark-700`,
         table: {
-            // Table text size
-            text: `text-sm`,
+            // Table text 
+            text: {
+                head: `text-xs *:font-medium uppercase`,
+                body: `text-sm`,
+                foot: `text-xs *:font-medium uppercase`
+            },
             // Table cell background
             cell: `!bg-light-50 dark:!bg-dark-800`,
             // Table cell behavior on hover
@@ -24,12 +28,13 @@ export function AdapterConfig(
                     // Table cell behavior when selected
                     selected: `group-[.striped-col.selected]:even:!bg-primary-200 group-[.striped-col.selected]:dark:even:!bg-primary-700`,
                     // Table cell behavior when reorder
-                    reorder: `[.dtcr-moving-first]:!border-primary-300 [.dtcr-moving-last]:!border-primary-300 [.dtcr-moving-first]:dark:!border-primary-500 [.dtcr-moving-last]:dark:!border-primary-500`,
+                    reorder: `[.dtcr-moving-first]:!border-primary-300 [.dtcr-moving-last]:!border-primary-300 [.dtcr-moving-first]:dark:!border-primary-500 [.dtcr-moving-last]:dark:!border-primary-500`
                 },
                 // Striped rows (.striped-row)
                 row: {
                     // Table cell background
-                    cell: `group-[:nth-of-type(2n).striped-row]:!bg-light-100 group-[:nth-of-type(2n).striped-row]:dark:!bg-dark-700`
+                    cell: `group-[:nth-of-type(2n).striped-row]:!bg-light-100 group-[:nth-of-type(2n).striped-row]:dark:!bg-dark-700`,
+                    hover: `group-[:nth-of-type(2n).striped-row:hover]:!bg-light-200 group-[:nth-of-type(2n).striped-row:hover]:dark:!bg-dark-600`
                 },
             }
         },
@@ -38,7 +43,7 @@ export function AdapterConfig(
             size: `text-sm`,
             // Text colors
             emphasis: `text-gray-900 dark:text-white`,
-            muted: `text-gray-500 dark:text-gray-400`,
+            muted: `text-gray-500 dark:text-gray-400`
         },
         spacing: {
             // DT rows vertical space
@@ -46,13 +51,13 @@ export function AdapterConfig(
             // Flex/grid elements vertical space
             vertical: `gap-x-1`,
             // Flex/grid elements horizontal space
-            horizontal: `gap-y-1`,
+            horizontal: `gap-y-1`
         },
         border: {
             // Border radius
             radius: `rounded-lg`,
             // Border color
-            color: `border-light-200 dark:border-dark-600`,
+            color: `!border-b-light-200 !border-t-light-200 !border-l-light-200 !border-r-light-200 dark:!border-b-dark-600 dark:!border-t-dark-600 dark:!border-l-dark-600 dark:!border-r-dark-600`,
             // Focus ring
             focus: `focus:ring-1 focus:ring-primary-500 focus:border-primary-500`
         }
@@ -73,17 +78,17 @@ export function AdapterConfig(
 
     // Simple input field
     if (elements.forms.input == undefined) {
-        elements.forms.input = `${elements.bg} border ${elements.border.radius} ${elements.border.color} ${elements.border.focus} ${elements.table.size} ${elements.text.emphasis} block w-full p-2.5 dark:placeholder-gray-400 outline-none`;
+        elements.forms.input = `${elements.bg} border ${elements.border.radius} ${elements.border.color} ${elements.border.focus} ${elements.text.size} ${elements.text.emphasis} block w-full p-2.5 dark:placeholder-gray-400 outline-none`;
     }
 
     // Search input field
     if (elements.forms.search == undefined) {
-        elements.forms.search = `${elements.bg} border ${elements.border.radius} ${elements.border.color} ${elements.border.focus} ${elements.table.size} ${elements.text.emphasis} block w-full p-2.5 dark:placeholder-gray-400 outline-none`;
+        elements.forms.search = `${elements.bg} border ${elements.border.radius} ${elements.border.color} ${elements.border.focus} ${elements.text.size} ${elements.text.emphasis} block w-full p-2.5 dark:placeholder-gray-400 outline-none`;
     }
 
     // Select
     if (elements.forms.select == undefined) {
-        elements.forms.select = `${elements.bg} border ${elements.border.radius} ${elements.border.color} ${elements.border.focus} ${elements.table.size} ${elements.text.emphasis} block w-full p-2.5 outline-none`;
+        elements.forms.select = `${elements.bg} border ${elements.border.radius} ${elements.border.color} ${elements.border.focus} ${elements.text.size} ${elements.text.emphasis} block w-full p-2.5 outline-none`;
     }
 
     // Transaprent button (with or without border)
@@ -94,7 +99,7 @@ export function AdapterConfig(
 
     // Simple button (used almost everywhere)
     if (elements.forms.button.default == undefined) {
-        elements.forms.button.default = `${elements.table.size} ${elements.bg} border ${elements.border.radius} ${elements.border.color} ${elements.text.emphasis} py-2.5 px-5 font-medium focus:outline-none hover:bg-light-100 hover:text-dark-700 focus:z-10 focus:ring-4 focus:ring-light-100 dark:focus:ring-dark-700 dark:hover:bg-dark-600 dark:hover:text-light-300`;
+        elements.forms.button.default = `${elements.text.size} ${elements.bg} border ${elements.border.radius} ${elements.border.color} ${elements.text.emphasis} py-2.5 px-5 font-medium focus:outline-none hover:bg-light-100 hover:text-dark-700 focus:z-10 focus:ring-4 focus:ring-light-100 dark:focus:ring-dark-700 dark:hover:bg-dark-600 dark:hover:text-light-300`;
     }
 
     return elements;

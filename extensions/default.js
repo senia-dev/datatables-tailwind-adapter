@@ -1,6 +1,6 @@
 export function insertDefault(elements) {
     return {
-        container: `dt-container ${elements.text.emphasis} ${elements.table.text} ${elements.spacing.rows} w-full`,
+        container: `dt-container ${elements.text.emphasis} ${elements.table.text.body} ${elements.spacing.rows} w-full`,
         empty: {
             row: `p-3 text-center ${elements.text.muted}`,
         },
@@ -49,16 +49,16 @@ export function insertDefault(elements) {
         },
         table: `dataTable`,
         tbody: {
-            cell: `${elements.table.cell} ${elements.table.hover} ${elements.table.selected} ${elements.table.striped.row.cell} ${elements.table.striped.col.cell} ${elements.table.striped.col.hover} ${elements.table.striped.col.selected} ${elements.table.striped.col.reorder}`,
+            cell: `${elements.table.cell} ${elements.table.hover} ${elements.table.selected} ${elements.table.striped.row.cell} ${elements.table.striped.row.hover} ${elements.table.striped.col.cell} ${elements.table.striped.col.hover} ${elements.table.striped.col.selected} ${elements.table.striped.col.reorder}`,
             row: `group border-b ${elements.border.color}`
         },
         thead: {
-            cell: `text-xs *:font-medium uppercase ${elements.border.color} ${elements.table.cell} ${elements.table.striped.col.cell}`,
-            row: `border-b ${elements.border.color}`
+            cell: `${elements.table.text.head} ${elements.border.color} ${elements.table.cell} ${elements.table.striped.col.cell}`,
+            row: `group border-b ${elements.border.color}`
         },
         tfoot: {
-            cell: `text-xs *:font-medium uppercase ${elements.border.color} ${elements.table.cell} ${elements.table.striped.col.cell}`,
-            row: ``
+            cell: `${elements.table.text.foot} ${elements.border.color} ${elements.table.cell} ${elements.table.striped.col.cell}`,
+            row: `group`
         },
         paging: {
             active: `font-semibold bg-primary-600 dark:bg-primary-500 border-primary-700 dark:!border-primary-600 hover:!bg-primary-500 dark:hover:!bg-primary-400`,

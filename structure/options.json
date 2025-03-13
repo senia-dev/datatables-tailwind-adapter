@@ -1,7 +1,11 @@
 {
     "bg": "",
     "table": {
-        "text": "",
+        "text": {
+            "head": "",
+            "body": "",
+            "foot": ""
+        },
         "cell": "",
         "striped": {
             "col": {
@@ -11,7 +15,8 @@
                 "reorder": ""
             },
             "row": {
-                "cell": ""
+                "cell": "",
+                "hover": ""
             }
         },
         "hover": "",
