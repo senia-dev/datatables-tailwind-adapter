@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.5] - 2025-03-14
+
+### Added
+
+- Added icons for SearchPanes controls (`search`, `clear`, `collapse`, `sort alphabetically`, `sort numerically`)
+- Added classes for table row/cell decoration
+
+### Changed
+
+- Changed selected row highlighting from **background-color** to **inset-shadow**
+
+## Fixed
+
+- Fixed bug, when clear button in SearchPane did not cleared selection
+
+> Author: @senia-dev
+
 ## [1.0.4] - 2025-03-13
 
 ### Added

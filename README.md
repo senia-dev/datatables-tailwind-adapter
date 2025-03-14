@@ -93,6 +93,36 @@ Each table cell has predefined behaviour, if parent has class **.striped-col** (
 
 Works with`tbody` (`thead` and `tfoot` - only **.striped-col**) table rows.
 
+## Highlighting (new)
+
+You are able to higlight rows or cells with predefined classes by filling background with colors below:
+
+| Color      | Class (row)   | Class (cell)   |
+|:-----------|:--------------|:---------------|
+| *red*      | danger-row    | danger-cell    |
+| *green*    | success-row   | success-cell   |
+| *yellow*   | warning-row   | warning-cell   |
+| *blue*     | info-row      | info-cell      |
+| *neutral*  | secondary-row | secondary-cell |
+
+```html
+<!-- Example usage: whole row is red -->
+<tr class="danger-row">
+    <td>Column 1</td>
+    <td>Column 2</td>
+    <td>Column 3</td>
+</tr>
+
+<!-- Example usage: first column is red -->
+<tr>
+    <td class="danger-cell">Column 1</td>
+    <td>Column 2</td>
+    <td>Column 3</td>
+</tr>
+```
+
+This feature perfectly works with **striped** classes, mentioned before.
+
 ## Customization
 
 If you want to customize adapter with your own classes, you can define config while creating adapter, or access prebuilt object `DataTabelT` after initialization, and modify it as you wish.
@@ -132,7 +162,7 @@ While defining new adapter, you can add some configuration variables. Adapter **
         // Table cell behavior on hover
         hover: `group-hover:!bg-light-100 group-hover:dark:!bg-dark-700`,
         // Table cell behavior when selected
-        selected: `group-[.selected]:!bg-primary-100 group-[.selected]:dark:!bg-primary-800 group-[.selected]:!border-primary-300 group-[.selected]:dark:!border-primary-500`,
+        selected: `group-[.selected]:!border-primary-300 group-[.selected]:dark:!border-primary-500 group-[.selected]:inset-shadow-[0_0_0_200px] group-[.selected]:inset-shadow-primary-200 group-[.selected]:dark:inset-shadow-primary-900 group-[.selected:hover]:inset-shadow-primary-300 group-[.selected:hover]:dark:inset-shadow-primary-800`,
         // Striped table
         striped: {
             // Striped columns (.striped-col)
@@ -142,7 +172,7 @@ While defining new adapter, you can add some configuration variables. Adapter **
                 // Table cell behavior on hover
                 hover: `group-[.striped-col:not(.selected):hover]:even:!bg-light-200 group-[.striped-col:not(.selected):hover]:dark:even:!bg-dark-600`,
                 // Table cell behavior when selected
-                selected: `group-[.striped-col.selected]:even:!bg-primary-200 group-[.striped-col.selected]:dark:even:!bg-primary-700`,
+                selected: `group-[.striped-col.selected]:even:inset-shadow-primary-300 group-[.striped-col.selected]:dark:even:inset-shadow-primary-800 group-[.striped-col.selected:hover]:even:inset-shadow-primary-400 group-[.striped-col.selected:hover]:dark:even:inset-shadow-primary-700`,
                 // Table cell behavior when reorder
                 reorder: `[.dtcr-moving-first]:!border-primary-300 [.dtcr-moving-last]:!border-primary-300 [.dtcr-moving-first]:dark:!border-primary-500 [.dtcr-moving-last]:dark:!border-primary-500`
             },
@@ -150,6 +180,7 @@ While defining new adapter, you can add some configuration variables. Adapter **
             row: {
                 // Table cell background
                 cell: `group-[:nth-of-type(2n).striped-row]:!bg-light-100 group-[:nth-of-type(2n).striped-row]:dark:!bg-dark-700`,
+                // Table cell behavior on hover
                 hover: `group-[:nth-of-type(2n).striped-row:hover]:!bg-light-200 group-[:nth-of-type(2n).striped-row:hover]:dark:!bg-dark-600`
             },
         }
@@ -165,9 +196,9 @@ While defining new adapter, you can add some configuration variables. Adapter **
         // DT rows vertical space
         rows: `space-y-4`,
         // Flex/grid elements vertical space
-        vertical: `gap-x-1`,
+        vertical: `gap-x-1.5`,
         // Flex/grid elements horizontal space
-        horizontal: `gap-y-1`
+        horizontal: `gap-y-1.5`
     },
     border: {
         // Border radius
@@ -261,7 +292,7 @@ DataTabelT: {
 
 ## Contributing
 
-In case you want to help develop this little project (or you have some cool ideas or improvements :)), check out [CONTRIBUTING.md](./CONTRIBUTING.md).
+In case you want to help develop this little project (or you have some cool ideas or improvements :grinning:), check out [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 Test case I am using currently: 
 
