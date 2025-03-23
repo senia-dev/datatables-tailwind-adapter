@@ -23,7 +23,7 @@ export function insertButtons(elements) {
                 tag: `button`,
                 className: `${elements.forms.button.default}`,
                 active: `dt-button-active`, // class name
-                disabled: `disabled`, // class name
+                disabled: `${elements.forms.disabled}`, // class name
                 spacer: {
                     className: `dt-button-spacer`,
                     tag: `span`

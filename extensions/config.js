@@ -59,6 +59,10 @@ export function AdapterConfig(
             color: `!border-b-light-200 !border-t-light-200 !border-l-light-200 !border-r-light-200 dark:!border-b-dark-600 dark:!border-t-dark-600 dark:!border-l-dark-600 dark:!border-r-dark-600`,
             // Focus ring
             focus: `focus:ring-1 focus:ring-primary-500 focus:border-primary-500`
+        },
+        forms: {
+            // Form elements disabled state
+            disabled: `opacity-25 !pointer-events-none`
         }
     }
 ) {
@@ -68,9 +72,6 @@ export function AdapterConfig(
     }
 
     // Preparing forms
-    if (elements.forms == undefined) {
-        elements.forms = {};
-    }
     if (elements.forms.button == undefined) {
         elements.forms.button = {};
     }

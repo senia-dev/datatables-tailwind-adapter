@@ -39,6 +39,7 @@
         "focus": ""
     },
     "forms": {
+        "disabled": "",
         "input": "",
         "search": "",
         "select": "",

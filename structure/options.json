@@ -36,5 +36,8 @@
         "radius": "",
         "color": "",
         "focus": ""
+    },
+    "forms": {
+        "disabled": ""
     }
 }

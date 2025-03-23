@@ -11,7 +11,7 @@ export function insertSearchPane(elements) {
         collapseButton: `dtsp-collapse-button`,
         container: `dtsp-searchPane flex flex-col ${elements.spacing.gap} *:flex-col lg:*:flex-row xl:[&.dtsp-columns-6]:*:flex-col [&.dtsp-columns-8]:*:flex-col`,
         countButton: `dtsp-countButton`,
-        disabledButton: `!cursor-not-allowed opacity-25`,
+        disabledButton: `${elements.forms.disabled}`,
         hidden: `dtsp-hidden`,
         hide: `dtsp-hide`,
         layout: `dtsp-`,

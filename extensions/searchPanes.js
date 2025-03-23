@@ -4,7 +4,7 @@ export function insertSearchPanes(elements) {
         clearAll: `sm:ms-auto ${elements.forms.button.default}`,
         collapseAll: elements.forms.button.default,
         container: `flex flex-col sm:flex-row flex-wrap justify-between ${elements.spacing.gap}`,
-        disabledButton: `!cursor-not-allowed opacity-25`,
+        disabledButton: `${elements.forms.disabled}`,
         emptyMessage: `dtsp-emptyMessage`,
         hide: `dtsp-hidden`,
         panes: `dtsp-panesContainer`,
