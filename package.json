@@ -4,15 +4,17 @@
     "type": "git",
     "url": "https://github.com/senia-dev/datatables-tailwind-adapter"
   },
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Adapter, which changes DataTables vanilla styling into Tailwind CSS",
   "main": "index.js",
   "style": "index.css",
   "keywords": [
+    "adapter",
+    "datatable",
     "datatables",
     "tailwind",
-    "jquery",
-    "es6"
+    "tailwindcss",
+    "jquery"
   ],
   "peerDependencies": {
     "datatables.net-autofill-dt": ">=2.7",
