@@ -207,6 +207,10 @@ While defining new adapter, you can add some configuration variables. Adapter **
         color: `!border-b-light-200 !border-t-light-200 !border-l-light-200 !border-r-light-200 dark:!border-b-dark-600 dark:!border-t-dark-600 dark:!border-l-dark-600 dark:!border-r-dark-600`,
         // Focus ring
         focus: `focus:ring-1 focus:ring-primary-500 focus:border-primary-500`
+    },
+    forms: {
+        // Form elements disabled state
+        disabled: `opacity-25 !pointer-events-none`
     }
 }
 ```
@@ -228,6 +232,8 @@ While defining new adapter, you can add some configuration variables. Adapter **
         gap: ""
     },
     forms: {
+        // ...
+        
         input: "",
         search: "",
         select: "",
