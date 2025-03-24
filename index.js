@@ -43,6 +43,42 @@ export class TailwindAdapter {
 
         this.Options = AdapterConfig(CustomOptions);
 
+        // Compiled gap (vertical + horizontal)
+        if (this.Options.spacing.gap == undefined) {
+            this.Options.spacing.gap = `${this.Options.spacing.vertical} ${this.Options.spacing.horizontal}`;
+        }
+
+        // Preparing forms
+        if (this.Options.forms.button == undefined) {
+            this.Options.forms.button = {};
+        }
+
+        // Simple input field
+        if (this.Options.forms.input == undefined) {
+            this.Options.forms.input = `${this.Options.bg} border ${this.Options.border.radius} ${this.Options.border.color} ${this.Options.border.focus} ${this.Options.text.size} ${this.Options.text.emphasis} block w-full p-2.5 dark:placeholder-gray-400 outline-none`;
+        }
+
+        // Search input field
+        if (this.Options.forms.search == undefined) {
+            this.Options.forms.search = `${this.Options.bg} border ${this.Options.border.radius} ${this.Options.border.color} ${this.Options.border.focus} ${this.Options.text.size} ${this.Options.text.emphasis} block w-full p-2.5 dark:placeholder-gray-400 outline-none`;
+        }
+
+        // Select
+        if (this.Options.forms.select == undefined) {
+            this.Options.forms.select = `${this.Options.bg} border ${this.Options.border.radius} ${this.Options.border.color} ${this.Options.border.focus} ${this.Options.text.size} ${this.Options.text.emphasis} block w-full p-2.5 outline-none`;
+        }
+
+        // Transaprent button (with or without border)
+        // Defined only hover behaviour
+        if (this.Options.forms.button.link == undefined) {
+            this.Options.forms.button.link = `hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-75 ${this.Options.text.emphasis}`;
+        }
+
+        // Simple button (used almost everywhere)
+        if (this.Options.forms.button.default == undefined) {
+            this.Options.forms.button.default = `${this.Options.text.size} ${this.Options.bg} border ${this.Options.border.radius} ${this.Options.border.color} ${this.Options.text.emphasis} py-2.5 px-5 font-medium focus:outline-none hover:bg-light-100 hover:text-dark-700 focus:z-10 focus:ring-4 focus:ring-light-100 dark:focus:ring-dark-700 dark:hover:bg-dark-600 dark:hover:text-light-300`;
+        }
+
         // Preparing public `DataTableT`
         this.DataTableT = this.#DataTableR = Adapter(this.Options);
     }

@@ -66,41 +66,5 @@ export function AdapterConfig(
         }
     }
 ) {
-    // Compiled gap (vertical + horizontal)
-    if (elements.spacing.gap == undefined) {
-        elements.spacing.gap = `${elements.spacing.vertical} ${elements.spacing.horizontal}`;
-    }
-
-    // Preparing forms
-    if (elements.forms.button == undefined) {
-        elements.forms.button = {};
-    }
-
-    // Simple input field
-    if (elements.forms.input == undefined) {
-        elements.forms.input = `${elements.bg} border ${elements.border.radius} ${elements.border.color} ${elements.border.focus} ${elements.text.size} ${elements.text.emphasis} block w-full p-2.5 dark:placeholder-gray-400 outline-none`;
-    }
-
-    // Search input field
-    if (elements.forms.search == undefined) {
-        elements.forms.search = `${elements.bg} border ${elements.border.radius} ${elements.border.color} ${elements.border.focus} ${elements.text.size} ${elements.text.emphasis} block w-full p-2.5 dark:placeholder-gray-400 outline-none`;
-    }
-
-    // Select
-    if (elements.forms.select == undefined) {
-        elements.forms.select = `${elements.bg} border ${elements.border.radius} ${elements.border.color} ${elements.border.focus} ${elements.text.size} ${elements.text.emphasis} block w-full p-2.5 outline-none`;
-    }
-
-    // Transaprent button (with or without border)
-    // Defined only hover behaviour
-    if (elements.forms.button.link == undefined) {
-        elements.forms.button.link = `hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-75 ${elements.text.emphasis}`;
-    }
-
-    // Simple button (used almost everywhere)
-    if (elements.forms.button.default == undefined) {
-        elements.forms.button.default = `${elements.text.size} ${elements.bg} border ${elements.border.radius} ${elements.border.color} ${elements.text.emphasis} py-2.5 px-5 font-medium focus:outline-none hover:bg-light-100 hover:text-dark-700 focus:z-10 focus:ring-4 focus:ring-light-100 dark:focus:ring-dark-700 dark:hover:bg-dark-600 dark:hover:text-light-300`;
-    }
-
     return elements;
 }
