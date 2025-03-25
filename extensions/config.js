@@ -62,7 +62,15 @@ export function AdapterConfig(
         },
         forms: {
             // Form elements disabled state
-            disabled: `opacity-25 !pointer-events-none`
+            disabled: `opacity-25 !pointer-events-none`,
+            gap: ``,
+            input: `block w-full p-2.5 dark:placeholder-gray-400 outline-none `,
+            search: `block w-full p-2.5 dark:placeholder-gray-400 outline-none `,
+            select: `border block w-full p-2.5 outline-none `,
+            button: {
+                link: `hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-75 `,
+                default: `border py-2.5 px-5 font-medium focus:outline-none hover:bg-light-100 hover:text-dark-700 focus:z-10 focus:ring-4 focus:ring-light-100 dark:focus:ring-dark-700 dark:hover:bg-dark-600 dark:hover:text-light-300 `
+            }
         }
     }
 ) {
