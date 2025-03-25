@@ -64,8 +64,8 @@ export function AdapterConfig(
             // Form elements disabled state
             disabled: `opacity-25 !pointer-events-none`,
             gap: ``,
-            input: `block w-full p-2.5 dark:placeholder-gray-400 outline-none `,
-            search: `block w-full p-2.5 dark:placeholder-gray-400 outline-none `,
+            input: `block border w-full p-2.5 dark:placeholder-gray-400 outline-none `,
+            search: `block border w-full p-2.5 dark:placeholder-gray-400 outline-none `,
             select: `border block w-full p-2.5 outline-none `,
             button: {
                 link: `hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-75 `,
