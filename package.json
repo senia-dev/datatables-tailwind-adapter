@@ -4,7 +4,7 @@
     "type": "git",
     "url": "https://github.com/senia-dev/datatables-tailwind-adapter"
   },
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Adapter, which changes DataTables vanilla styling into Tailwind CSS",
   "main": "index.js",
   "style": "index.css",
